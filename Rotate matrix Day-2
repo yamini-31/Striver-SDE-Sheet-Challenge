@@ -1,0 +1,27 @@
+class Solution {
+public:
+    void rotate(vector<vector<int>>& matrix) 
+    {
+        int n=matrix.size();
+        //step1: row rotate the matrix
+        int low=0,high=n-1;
+        while(low<high)
+        {
+            for(int j=0;j<n;j++)
+            {
+                swap(matrix[low][j],matrix[high][j]);
+            }
+            low++;
+            high--;
+        }
+        //step2: Transpose the matrix.
+        for(int i=0;i<n;i++)
+        {
+            for(int j=i+1;j<n;j++)
+            {
+                swap(matrix[i][j],matrix[j][i]);
+            }
+        }
+
+    }
+};
