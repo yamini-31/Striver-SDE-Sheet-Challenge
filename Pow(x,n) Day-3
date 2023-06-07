@@ -1,0 +1,30 @@
+class Solution {
+public:
+    double myPow(double x, int n) 
+    {
+        if(x==1)
+        return 1.0;
+        if(x==0)
+        return 0.0;
+        long long k=n;
+        if(n<0)
+        k = -static_cast<long long>(n);
+        double ans=1.0;   //Sahi hai
+        while(k>0)
+        {
+            if(k%2==0)
+            {
+                x=x*x;
+                k=k/2;
+            }
+            else
+            {
+                ans=ans*x;     // This is to remove the odd vala x and already multiplying it to ans
+                k=k-1;
+            }
+        }
+        if(n<0)
+        ans=double(1.0)/double(ans);
+        return ans;
+    }
+};
