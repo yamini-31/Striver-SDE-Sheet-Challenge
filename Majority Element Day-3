@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int majorityElement(vector<int>& nums) 
+    int majorityElement(vector<int>& nums)                     //Moore's Voitng Algorithm method
     {
         int me=nums[0];
         int count=0;
@@ -13,8 +13,7 @@ public:
 
             if(count==0)
             {
-                me=nums[i];
-                i=i-1;
+                me=nums[i+1];
             }
         }
         int sum=0;
