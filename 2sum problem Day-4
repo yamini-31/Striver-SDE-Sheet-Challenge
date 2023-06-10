@@ -1,0 +1,46 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) 
+    {
+        vector<int>ans;
+        int n=nums.size();
+        /*Brute force method O(n*2) method
+        for(int i=0;i<n;i++)
+        {
+            for(int j=i+1;j<n;j++)
+            {
+                if(nums[i]+nums[j]==target)
+                {
+                    ans.push_back(i);
+                    ans.push_back(j);
+                }                
+            }
+        }*/
+        vector<int>nums2=nums;
+        sort(nums2.begin(),nums2.end());
+        int low=0, high=n-1;
+        while(low<high)
+        {
+            if(nums2[low]+nums2[high]==target)
+            {
+                break;
+            }
+            else if(nums2[low]+nums2[high]<target)
+            {
+                low++;
+            }
+            else
+            high--;
+        }
+        int a=nums2[low],b=nums2[high];
+        for(int i=0;i<n;i++)
+        {
+            if(nums[i]==a)
+            ans.push_back(i);
+            else if(nums[i]==b)
+            ans.push_back(i);
+        }
+
+       return ans; 
+    }
+};
