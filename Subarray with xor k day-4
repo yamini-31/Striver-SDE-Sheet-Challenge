@@ -1,0 +1,21 @@
+int Solution::solve(vector<int> &A, int B) {
+    int count=0;
+    int xr=0;
+    map<int,int>mpp;
+    int n=A.size();
+    mpp[xr]++;
+    for(int i=0;i<n;i++)
+    {
+        xr=xr^A[i];
+        int rem=xr^B;
+        mpp[xr]++;
+        if(mpp.find(rem)!=mpp.end())
+        {
+            count=count+mpp[rem];
+        }
+        /*count+=mpp[rem];
+        mpp[xr]++;*/
+        
+    }
+    return count;
+}
