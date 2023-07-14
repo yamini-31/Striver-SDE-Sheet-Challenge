@@ -1,0 +1,27 @@
+class Solution {
+public:
+    
+    ListNode* reverseList(ListNode* head) 
+    {
+        if (head == NULL)
+            return NULL;
+        if (head->next == NULL)
+            return head;
+        
+        ListNode *curr = head;
+        ListNode *prev = NULL;
+        ListNode *next = NULL;
+        
+        while (curr != NULL)
+        {
+            next = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = next;
+        }
+        
+        return prev;
+    }
+
+};   //The time complexity of the provided code is O(n), where n is the number of nodes in the linked list.
+// and Space complexity is O(1).
