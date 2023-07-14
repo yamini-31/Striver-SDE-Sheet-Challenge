@@ -1,0 +1,32 @@
+//This is naive approach.
+class Solution {
+public:
+    ListNode* middleNode(ListNode* head) 
+    {
+        if(head==NULL)
+        return NULL;
+        if(head->next==NULL)
+        return head;
+        int n=0;
+        ListNode *curr=head;
+        while(curr!=NULL)
+        {
+            n++;
+            curr=curr->next;
+        }
+        cout<<n<<endl;
+        int mid;
+        if(n%2==0)
+        mid=n/2+1;
+        else
+        mid=(n+1)/2;
+        ListNode *temp=head;
+        while(mid-1>0)
+        {
+            temp=temp->next;
+            mid--;
+        }
+        return temp;
+    }
+};
+// Efficient method: Tortoise hare approach, check in notebook for that.
