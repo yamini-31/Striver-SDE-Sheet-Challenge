@@ -1,0 +1,38 @@
+class Solution {
+public:
+    ListNode* rotateRight(ListNode* head, int k) {
+        
+        if (head == NULL || k == 0) 
+        return head;
+    
+        ListNode *curr=head;
+        ListNode *last=head;
+        int n=0;
+        //Found the last node ans count n.
+        while(curr!=NULL)
+        {
+            last=curr;
+            curr=curr->next;
+            n++;
+        }
+        int k1=k%n;
+        if (k1 == 0)
+        {
+        return head; // No need to rotate as k is a multiple of n.
+        }
+        int k2=n-k1-1;
+        ListNode* temp = head;
+        ListNode* nex = head;
+        while (k2 >= 0)
+         { 
+          // Changed the condition from k2 <= 0 to k2 >= 0
+           temp = nex;
+          nex = nex->next;
+        k2--;
+       }
+       temp->next = NULL;
+       last->next = head;
+      return nex;
+    }
+};
+//Time Complexity: O(length of list) + O(length of list – (length of list%k))
