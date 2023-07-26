@@ -1,0 +1,49 @@
+// my method
+Node* mergeTwoLists(Node* a, Node* b) {
+    Node* temp = new Node(0); // Dummy node to start the merged list
+    Node* res = temp;         // Pointer to the head of the merged list
+
+    while (a != NULL && b != NULL) {
+        if (a->data < b->data) {
+            temp->bottom = new Node(a->data); // Create a new node and append to merged list
+            temp = temp->bottom;
+            a = a->bottom;
+        } else {
+            temp->bottom = new Node(b->data); // Create a new node and append to merged list
+            temp = temp->bottom;
+            b = b->bottom;
+        }
+    }
+
+    // Append the remaining nodes of a or b, if any
+    while (a != NULL) {
+        temp->bottom = new Node(a->data); // Create a new node and append to merged list
+        temp = temp->bottom;
+        a = a->bottom;
+    }
+
+    while (b != NULL) {
+        temp->bottom = new Node(b->data); // Create a new node and append to merged list
+        temp = temp->bottom;
+        b = b->bottom;
+    }
+
+    return res->bottom; // Skip the dummy node and return the merged list
+}
+
+Node *flatten(Node *root)
+{
+   if (root == NULL || root->next == NULL) 
+            return root; 
+  
+        // recur for list on right 
+        root->next = flatten(root->next); 
+  
+        // now merge 
+        root = mergeTwoLists(root, root->next); 
+  
+        // return the root 
+        // it will be in turn merged with its left 
+        return root; 
+}
+// better use strivers method.
