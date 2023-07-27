@@ -7,7 +7,7 @@ class Stack {
 public:
     
     Stack(int capacity) {
-        this->size=capacity;
+        this->size=capacity;    this is a pointer used to assign value of parameter to member variable.
         arr = new int[capacity];
         idx = -1;
     }
