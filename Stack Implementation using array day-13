@@ -1,3 +1,5 @@
+//By using this->size, we are assigning the value of the capacity parameter to the member variable size, which represents the 
+//capacity of the stack managed by the class.
 class Stack {
     int * arr;
     int idx;
